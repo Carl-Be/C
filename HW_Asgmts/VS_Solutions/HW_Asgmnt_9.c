@@ -19,8 +19,8 @@
 *                                                                       *
 * EXTERNAL REFERENCES:                                                  *
 *                                                                       *
-* Name			Description                                             *
-* ----			-----------                                             *
+* Name			Description                                     *
+* ----			-----------                                     *
 * <stdio.h>     printf(), getchar()                                     *
 * <stdlib.h>    malloc(), exit()                                        *
 * <string.h>    strcmp(), strcpy()                                      *
