@@ -1,0 +1,7 @@
+﻿  Bechie_Carl_Pg275_Ex1b.c
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg275_Ex1b\Bechie_Carl_Pg275_Ex1b.c(78,52): warning C4047: 'function': 'char *' differs in levels of indirection from 'char (*)[1024]'
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg275_Ex1b\Bechie_Carl_Pg275_Ex1b.c(78,52): warning C4024: 'array_null_initialzer': different types for formal and actual parameter 2
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg275_Ex1b\Bechie_Carl_Pg275_Ex1b.c(80,45): warning C4047: 'function': 'char *' differs in levels of indirection from 'char (*)[1024]'
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg275_Ex1b\Bechie_Carl_Pg275_Ex1b.c(80,45): warning C4024: 'print_reversal': different types for formal and actual parameter 2
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg275_Ex1b\Bechie_Carl_Pg275_Ex1b.c(111,32): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+  Bechie_Carl_Pg275_Ex1b.vcxproj -> C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Debug\Bechie_Carl_Pg275_Ex1b.exe

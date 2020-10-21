@@ -1,22 +1,76 @@
-// File Name  : 
-// Description:
-//
-// Aurthor: Carl Bechie
-// Created:
-// Updated: 
-// Version: 1
-// Class  : CNR 10777 / CIS 265
-//
-// Build: VS 2019 compiler
-// Run: VS 2019 compiler
+/************************************************************************
+* FILE NAME: Bechie_Carl_Pg274_Ex9.c                                    *
+* Student: Carl Bechie                                                  *
+* Class: CNR 10777 CIS265                                               * 
+*                                                                       *
+* PURPOSE:                                                              *
+*                                                                       *
+* FILE REFERENCES:                                                      * 
+*                                                                       *
+* Name              I/O                     Description                 *
+* ----              ---                     -----------                 *
+*                                                                       *
+* EXTERNAL VARIABLES:                                                   *
+* Source: < >                                                           *
+*                                                                       *
+* Name        Type            I/O           Description                 *
+* -----       ----            ---           -----------                 *
+*                                                                       *
+* EXTERNAL REFERENCES:                                                  *
+*                                                                       *
+* Name			Description                                     *
+* ----			-----------                                     *
+* <stdio.h>     printf(), scanf_s()                                     *
+*                                                                       *
+* ABNORMAL TERMINATION CONDITIONS, ERROR AND WARNING MESSAGES:          *
+*                                                                       *
+* ASSUMPTIONS, CONSTRAINTS, RESTRICTIONS:                               *
+*                                                                       *
+* NOTES:                                                                *
+*                                                                       *
+* REQUIREMENTS/FUNCTIONAL SPECIFICATIONS REFERENCES:                    *
+*                                                                       *
+* DEVELOPMENT HISTORY:                                                  * 
+*                                                                       *
+* Date          Author      Change Id Release     Description Of Change *
+* -----       ---------     -----------------     --------------------- *
+*             Carl Bechie        1.0              First Edit            *
+*                                                                       *
+* ALGORITHM (PDL)                                                       *
+*                                                                       *
+************************************************************************/
 
-#include <stdio.h> // standard C lib for I/O
-                       
-int main(void)  
-{  
-    
+/* Include global parameters */
+#include <stdio.h> /* standard C lib for I/O */
+
+/* initialize Defines */
+
+/* Declare Prototypes */
+
+/************************************************************************/
+
+/************************************************************************
+*                                                                       *
+* FUNCTION NAME: main                                                   *
+*                                                                       *
+* ARGUMENT LIST:                                                        *
+*                                                                       *
+* ARGUMENT        TYPE       I/O            DESCRIPTION                 *
+* --------        ----       ---            -----------                 *     
+*  none                                                                 *
+*                                                                       * 
+* RETURNS:                                                              * 
+* int 0                                                                 *
+*                                                                       *
+************************************************************************/
+
+int main(void)
+{
 
 
-    return 0; // Terminate program with normal status code
 
-} 
+    return 0; /* Terminate program with normal status code */
+
+}
+
+/************************************************************************/

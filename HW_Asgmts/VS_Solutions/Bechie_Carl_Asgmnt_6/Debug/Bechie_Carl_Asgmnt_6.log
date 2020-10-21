@@ -1,0 +1,6 @@
+﻿  Bechie_Carl_Pg274_Ex9.c
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg274_Ex9.c(79,52): warning C4047: 'function': 'const double *' differs in levels of indirection from 'const double (*)[3]'
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg274_Ex9.c(79,52): warning C4024: 'inner_product': different types for formal and actual parameter 1
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg274_Ex9.c(79,56): warning C4047: 'function': 'const double *' differs in levels of indirection from 'const double (*)[3]'
+C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Bechie_Carl_Pg274_Ex9.c(79,56): warning C4024: 'inner_product': different types for formal and actual parameter 2
+  Bechie_Carl_Asgmnt_6.vcxproj -> C:\Users\bechi\OneDrive\Desktop\pima\Fall_2020_We_Made_It!\C\C\HW_Asgmts\VS_Solutions\Bechie_Carl_Asgmnt_6\Debug\Bechie_Carl_Pg274_Ex9.exe
