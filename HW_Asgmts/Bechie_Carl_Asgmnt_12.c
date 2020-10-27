@@ -5,14 +5,20 @@
 #include <ctype.h>
 
 /*Defines*/
-#define MAX_LEN 12
+#define MAX_LEN (int )12
+#define ID_LEN (int) 6
+#define MENU_OPTION_LEN (int) 1
+#define ONE_BYTE (int) 1
+#define MAX_LINE_LEN (int) 60
+#define MAX_SEGMENT_LEN (int) 20
 
 /*Prototypes*/
+void clear_stdin_garbage();
 void determine_selection(char selection, const struct student* student_records);
 void display_menu();
-void display_records(const struct student* student_records);
+void display_records(const struct student* student_records, int start, int stop);
 void fill_student_records(struct student* student_records, FILE* file_ptr);
-char get_menu_input();
+void get_input(char* ptr, int stop);
 int get_segment(char* line_buffer, char* placeholder, int line_index);
 FILE* read_file(char* file_name, char* mode);
 int set_campus(struct student* student_records, char* line_buffer, char* placeholder, int line_index, int i);
@@ -33,24 +39,22 @@ struct student
 
 /****************************************************************************************************************************************/
 
-int main(void)
+void main(void)/*Function determine_selection ends program if user enters 'q' or 'Q'*/
 {
 	struct student student_records[MAX_LEN];
 	FILE* file_ptr = read_file("student database.txt", "r");
-
 	fill_student_records(student_records, file_ptr);
 
-	char selection;
+	char* selection = calloc(MENU_OPTION_LEN + 1, ONE_BYTE);
 	do {
 
 		display_menu();
-		selection = get_menu_input();
-		determine_selection(selection, student_records);
+		get_input(selection, MENU_OPTION_LEN);
+		determine_selection(selection[0], student_records);
 
 		puts("");
-	} while (selection != 'Q');
+	} while (1);
 
-	return 0;
 }
 
 /****************************************************************************************************************************************/
@@ -72,10 +76,10 @@ Selection: ";
 
 void determine_selection(char selection, const struct student* student_records)
 {
-	switch (selection)
+	switch (toupper(selection))
 	{
 	case 'D':
-		display_records(student_records);
+		display_records(student_records, 0, MAX_LEN);
 		break;
 	case 'S':
 		student_lookup(student_records);
@@ -84,6 +88,7 @@ void determine_selection(char selection, const struct student* student_records)
 		student_campus_count(student_records);
 		break;
 	case 'Q':
+		exit(0);/*Exit Program with normal exit code*/
 		break;
 	default:
 		printf("\nWrong input (%c) please try again.\n", selection);
@@ -92,7 +97,7 @@ void determine_selection(char selection, const struct student* student_records)
 
 /****************************************************************************************************************************************/
 
-void display_records(const struct student* student_records)
+void display_records(const struct student* student_records, int start, int stop)
 {
 	char* id;
 	char* name;
@@ -104,7 +109,7 @@ void display_records(const struct student* student_records)
  ----       ------            ----------          --------\n";
 	printf("%s", HEADER);
 
-	for (int i = 0; i < MAX_LEN; i++)
+	for (int i = start; i < stop; i++)
 	{
 		id = student_records[i].student_id;
 		name = student_records[i].student_name;
@@ -119,13 +124,13 @@ void display_records(const struct student* student_records)
 
 void fill_student_records(struct student* student_records, FILE* file_ptr)
 {
-	char* line_buffer = calloc(60, sizeof(char));/*No line is biger then 60 chars*/
-	char* placeholder = calloc(20, sizeof(char));/*No ID longer then 7 chars*/;
+	char* line_buffer = calloc(MAX_LINE_LEN, ONE_BYTE);/*No line is biger then 60 chars*/
+	char* placeholder = calloc(MAX_SEGMENT_LEN, ONE_BYTE);/*No segments longer then 20 chars*/;
 	int line_index = 0;
 
 	for (int i = 0; i < MAX_LEN; i++)
 	{
-		fgets(line_buffer, 60, file_ptr);
+		fgets(line_buffer, MAX_LINE_LEN, file_ptr);
 
 		line_index = set_id(student_records, line_buffer, placeholder, line_index, i);
 		line_index = set_name(student_records, line_buffer, placeholder, line_index, i);
@@ -193,21 +198,34 @@ int set_campus(struct student* student_records, char* line_buffer, char* placeho
 
 /****************************************************************************************************************************************/
 
-char get_menu_input()
+void get_input(char* ptr, int stop)
 {
-	char selection;
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < stop + 1; i++)
 	{
-		selection = getchar();
+		if ((ptr[i] = getchar()) == '\n' || ptr[i] == '\0')
+		{
+			ptr[i] = '\0';
+			break; 
+		}
+
+		if (i == stop)
+		{
+			printf("\nTo much input. Only input %d char(s). Returning to Main Menu\n\n", stop);
+			clear_stdin_garbage();
+			main();
+		}
 	}
 
+}
+
+void clear_stdin_garbage()
+{
 	int clear_stdin_garbage;
 
-	while((clear_stdin_garbage = getchar()) != '\n')
-	{}
-
-	return toupper(selection);
+	while ((clear_stdin_garbage = getchar()) != '\n')
+	{
+	}
 }
 
 /****************************************************************************************************************************************/
@@ -227,16 +245,63 @@ FILE* read_file(char* file_name, char* mode)
 
 /****************************************************************************************************************************************/
 
-void student_lookup(struct student* student_records)
+void student_lookup(const struct student* student_records)
 {
+	char* id = calloc(ID_LEN + 1, ONE_BYTE);/*Student id_len = 6 + 1*/
+	printf("\nEnter Student ID: ");
+	get_input(id, ID_LEN);
 
+	if (strlen(id) != ID_LEN)
+	{
+		printf("\nInput \"%s\". Returning to Main Menu.\nSuggestion: Input six numbers for ID.\n", id);
+		free(id);
+		return;
+	}
+
+	for (int i = 0; i < MAX_LEN; i++)
+	{
+		if (strcmp(id, student_records[i].student_id) == 0)
+		{
+			display_records(student_records, i, i + 1);
+			break;
+		}
+		else if (i == (MAX_LEN - 1) && strcmp(id, student_records[i].student_id) != 0)
+		{
+			printf("Student ID %s not found.\n", id);
+			break;
+		}
+	}
+
+	free(id);
 }
 
 /****************************************************************************************************************************************/
 
-void student_campus_count(struct student* student_records)
+void student_campus_count(const struct student* student_records)
 {
+	enum campuses{west = 'W', east = 'E', downtown = 'D'};
 
+	int west_count = 0, east_count = 0, down_count = 0;
+
+	for (int i = 0; i < MAX_LEN; i++)
+	{
+		switch (student_records[i].student_campus[0])
+		{
+			case west:
+				west_count++;
+				break;
+			case east:
+				east_count++;
+				break;
+			case downtown:
+				down_count++;
+				break;
+		}
+	}
+
+	printf("\nEast Campus: %d students", east_count);
+	printf("\nWest Campus: %d students", west_count);
+	printf("\nDowntown Campus: %d students\n", down_count);
 }
 
 
