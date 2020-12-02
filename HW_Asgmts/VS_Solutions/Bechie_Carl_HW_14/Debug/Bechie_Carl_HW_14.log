@@ -1,0 +1,3 @@
+﻿  Bechie_Carl_Pg505_Ex1.c
+D:\Programming\C\pima\Bechie_Carl_HW_14\Bechie_Carl_Pg505_Ex1.c(289,8): warning C4013: 'exit' undefined; assuming extern returning int
+  Bechie_Carl_HW_14.vcxproj -> D:\Programming\C\pima\Bechie_Carl_HW_14\Debug\Bechie_Carl_HW_14.exe
